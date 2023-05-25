@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center mb-3 mt-3">SKILLS</h2>
+
+        <div class="row m-4">
+            <div class="col-md-4">
+                <div class="chart-container">
+                    <div class="chart-title">Diseño</div>
+                    <canvas id="designChart"></canvas>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="chart-container">
+                    <div class="chart-title">Creación de contenido</div>
+                    <canvas id="contentCreationChart"></canvas>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="chart-container">
+                    <div class="chart-title">Marketing Digital</div>
+                    <canvas id="digitalMarketingChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+    <script>
+        // Datos para la primera gráfica "Diseño"
+        const designData = {
+            labels: ['Diseño grafico', 'Diseño de identidad', 'Diseño Web'],
+            datasets: [{
+                data: [10, 45, 45],
+                backgroundColor: ['#00010D', '#3B403F', '#8C8581'],
+            }]
+        };
+
+        // Datos para la segunda gráfica "Creación de contenido"
+        const contentCreationData = {
+            labels: ['Fotografía', 'Video', 'Post social media'],
+            datasets: [{
+                data: [40, 40, 20],
+                backgroundColor: ['#BFB8B4', '#D9D2D0', '#00010D'],
+            }]
+        };
+
+        // Datos para la tercera gráfica "Marketing Digital"
+        const digitalMarketingData = {
+            labels: ['Search Engine optimization', 'Auditoria de marca', 'Parrillas de contenido'],
+            datasets: [{
+                data: [50, 40, 10],
+                backgroundColor: ['#8C8581', '#3B403F', '#BFB8B4'],
+            }]
+        };
+
+        // Opciones comunes para todas las gráficas
+        const commonOptions = {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            layout: {
+                padding: {
+                    left: 20,
+                    right: 20,
+                    top: 20,
+                    bottom: 20
+                }
+            }
+        };
+
+        // Configuración de la primera gráfica
+        const designConfig = {
+            type: 'doughnut',
+            data: designData,
+            options: {
+                ...commonOptions,
+                plugins: {
+                    ...commonOptions.plugins,
+                    tooltip: {
+                        enabled: false
+                    },
+                    legend: {
+                        position: 'bottom',
+                        align: 'center'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Diseño',
+                        position: 'bottom',
+                        padding: 20,
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    }
+                }
+            }
+        };
+
+        // Configuración de la segunda gráfica
+        const contentCreationConfig = {
+            type: 'doughnut',
+            data: contentCreationData,
+            options: {
+                ...commonOptions,
+                plugins: {
+                    ...commonOptions.plugins,
+                    tooltip: {
+                        enabled: false
+                    },
+                    legend: {
+                        position: 'bottom',
+                        align: 'center'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Creación de contenido',
+                        position: 'bottom',
+                        padding: 20,
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    }
+                }
+            }
+        };
+
+        // Configuración de la tercera gráfica
+        const digitalMarketingConfig = {
+            type: 'doughnut',
+            data: digitalMarketingData,
+            options: {
+                ...commonOptions,
+                plugins: {
+                    ...commonOptions.plugins,
+                    tooltip: {
+                        enabled: false
+                    },
+                    legend: {
+                        position: 'bottom',
+                        align: 'center'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Marketing Digital',
+                        position: 'bottom',
+                        padding: 20,
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    }
+                }
+            }
+        };
+
+        // Crear las gráficas
+        const designChart = new Chart(document.getElementById('designChart'), designConfig);
+        const contentCreationChart = new Chart(document.getElementById('contentCreationChart'), contentCreationConfig);
+        const digitalMarketingChart = new Chart(document.getElementById('digitalMarketingChart'), digitalMarketingConfig);
+    </script>
+</body>
+
+</html>
